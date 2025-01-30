@@ -4,13 +4,12 @@ import api
 import re
 
 # Set up API details
-API_URL = "http://localhost:8080/api/chat/completions"  # Verify this is correct
+API_URL = "http://localhost:8080/api/chat/completions"  
 HEADERS = {
     "Authorization": f"Bearer {api.API_KEY}",
     "Content-Type": "application/json"
 }
-
-st.title("PyPanther: Chatbot for CS Graduate ")
+st.title("PyPanther")
 
 with st.chat_message("assistant"):
     st.markdown("Hello! I'm a bot. Please let me know your question.")
@@ -36,14 +35,17 @@ if prompt := st.chat_input("Ask me anything..."):
     }
     
     # Send request to API
-    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    with st.status("Sending request to PyPanther...", expanded=True) as status:
+        status.update(label="Thinking...")
+        response = requests.post(API_URL, headers=HEADERS, json=payload)
+        status.update(label="Got it!!!", state="complete", expanded=False)
     
     if response.status_code == 200:
         raw_reply = response.json().get("choices", [{}])[0].get("message", {}).get("content", "Error: No response")
         reply = re.sub(r"<think>.*?</think>", "", raw_reply, flags=re.DOTALL).strip()
     else:
         reply = f"Error {response.status_code}: {response.text}"
-    
+        
     with st.chat_message("assistant"):
         st.markdown(reply)
     
