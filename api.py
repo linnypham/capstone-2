@@ -1,6 +1,1 @@
-from openai import OpenAI
-
-client = OpenAI(
-  organization='YOUR_ORG_ID',
-  project='$PROJECT_ID',
-)
+API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyNDljY2Y0LTU3OTQtNDZlMS05NDYzLTViMTBkZTc4MWZjNyJ9.1cp-3kgjPiLG9RKmRnQFTuB6PRwhZWKN-8QKKXh9UqM"
