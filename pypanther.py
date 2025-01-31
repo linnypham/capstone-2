@@ -3,7 +3,7 @@ import requests
 import re
 
 # Set up API details
-API_URL = "http://localhost:8080/api/chat/completions"  
+API_URL = "http://localhost:3000/api/chat/completions"  
 
 HEADERS = {
     "Authorization": f"Bearer {st.secrets[API_KEY]}",
