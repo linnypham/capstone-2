@@ -4,9 +4,9 @@ import re
 
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
-
+api_key=st.secrets["API_KEY"]
 HEADERS = {
-    "Authorization": f"Bearer {st.secrets[API_KEY]}",
+    "Authorization": f"Bearer {api_key}",
     "Content-Type": "application/json"
 }
 st.title("PyPanther")
