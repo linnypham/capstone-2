@@ -1,12 +1,12 @@
 import streamlit as st
 import requests
-import api
 import re
 
 # Set up API details
 API_URL = "http://localhost:8080/api/chat/completions"  
+
 HEADERS = {
-    "Authorization": f"Bearer {api.API_KEY}",
+    "Authorization": f"Bearer {st.secrets[API_KEY]}",
     "Content-Type": "application/json"
 }
 st.title("PyPanther")
