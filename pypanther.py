@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import re
+import time
 
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
@@ -11,6 +12,7 @@ HEADERS = {
 }
 st.title("PyPanther")
 
+#hello message
 with st.chat_message("assistant"):
     st.markdown("Hello! I'm a bot. Please let me know your question.")
     
@@ -35,7 +37,8 @@ if prompt := st.chat_input("Ask me anything..."):
     }
     
     # Send request to API
-    with st.status("Sending request to PyPanther...", expanded=True) as status:
+    with st.status("Sending to PyPanther...", expanded=True) as status:
+        time.sleep(1)
         status.update(label="Thinking...")
         response = requests.post(API_URL, headers=HEADERS, json=payload)
         status.update(label="Got it!!!", state="complete", expanded=False)
