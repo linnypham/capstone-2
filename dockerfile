@@ -4,19 +4,18 @@ FROM python:3.11
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the application files to the container
+# Copy application files
 COPY pypanther.py .
 COPY requirements.txt .
-COPY .streamlit/secrets.toml /root/.streamlit/secrets.toml
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port Streamlit runs on
+# Expose Streamlit port
 EXPOSE 8501
 
-# Set environment variables for Streamlit
+# Set environment variable for Streamlit
 ENV STREAMLIT_SERVER_HEADLESS=true
 
-# Run the Streamlit app
+# Run Streamlit
 CMD ["streamlit", "run", "pypanther.py", "--server.port=8501", "--server.address=0.0.0.0"]
