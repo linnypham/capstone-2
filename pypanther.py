@@ -15,7 +15,7 @@ st.title("PyPanther")
 #hello message
 with st.chat_message("assistant"):
     st.markdown("Hello! I'm a bot. Please let me know your question.")
-    
+# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -42,7 +42,7 @@ if prompt := st.chat_input("Ask me anything..."):
         status.update(label="Thinking...")
         response = requests.post(API_URL, headers=HEADERS, json=payload)
         status.update(label="Got it!!!", state="complete", expanded=False)
-    
+    #prepare reply, strip out thinking part
     if response.status_code == 200:
         raw_reply = response.json().get("choices", [{}])[0].get("message", {}).get("content", "Error: No response")
         reply = re.sub(r"<think>.*?</think>", "", raw_reply, flags=re.DOTALL).strip()
