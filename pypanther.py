@@ -19,7 +19,7 @@ st.logo("img/gsu.png",size = "large",link="https://www.gsu.edu/",icon_image="img
 st.title("PyPanther")
 
 #sidebar to choose departments
-models ={"Computer Science":"pypanther","Business":"b_ai","Law":"l_ai"}
+models ={"Computer Science":"aics","Business":"aibus","Law":"ailaw"}
 with st.sidebar:
     option = st.selectbox(
         "Choose your departments:",
