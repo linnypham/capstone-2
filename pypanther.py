@@ -9,9 +9,9 @@ st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout
                                 'About': "# This is a header. This is an *extremely* cool app!"})
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
-api_key=st.secrets["API_KEY"]
+
 HEADERS = {
-    "Authorization": f"Bearer {api_key}",
+    "Authorization": f"Bearer {st.secrets['API_KEY']}",
     "Content-Type": "application/json"
 }
 #logo and title
@@ -19,18 +19,21 @@ st.logo("img/gsu.png",size = "large",link="https://www.gsu.edu/",icon_image="img
 st.title("PyPanther")
 
 #sidebar to choose departments
-models ={"Computer Science":"cs_ai","Business":"b_ai","Law":"l_ai"}
+models ={"Computer Science":"pypanther","Business":"b_ai","Law":"l_ai"}
 with st.sidebar:
     option = st.selectbox(
         "Choose your departments:",
     ("Computer Science", "Business", "Law")
     )
-#hello message
-with st.chat_message("assistant"):
-    st.markdown("Hello! I'm a bot. Please let me know your question.")
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    
+#hello message
+with st.chat_message("assistant"):
+    st.markdown("Hello! I'm a bot. Please let me know your question.")
+
 
 # Display past messages
 for message in st.session_state.messages:
@@ -45,7 +48,7 @@ if prompt := st.chat_input("Ask me anything..."):
     
     # Prepare API request data
     payload = {
-        "model": f"{models[option]}",
+        "model": models[option],
         "messages": st.session_state.messages
     }
     
