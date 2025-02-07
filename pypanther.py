@@ -8,7 +8,7 @@ st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout
                                 'Report a bug': "https://www.extremelycoolapp.com/bug",
                                 'About': "# This is a header. This is an *extremely* cool app!"})
 # Set up API details
-API_URL = "http://localhost:3000/api/chat/completions"  
+API_URL = "http://localhost:8080/api/chat/completions"  
 
 HEADERS = {
     "Authorization": f"Bearer {st.secrets['API_KEY']}",
