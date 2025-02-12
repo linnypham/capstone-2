@@ -1,0 +1,3 @@
+Please asnwer question by extract and summarize information from the attached document into concise phrases. Ensure that the generated information only includes information directly from the document and do not add or infer anything beyond what is provided. Be as precise as possible using only information available within the document.
+
+[If applicable, add question related to the document here]
