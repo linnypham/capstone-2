@@ -3,10 +3,10 @@ import requests
 import re
 import time
 #initial config
-st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout="wide", initial_sidebar_state="auto",
-                   menu_items={'Get Help': 'https://www.extremelycoolapp.com/help',
-                                'Report a bug': "https://www.extremelycoolapp.com/bug",
-                                'About': "# This is a header. This is an *extremely* cool app!"})
+st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout="centered", initial_sidebar_state="auto",
+                   menu_items={'Get Help': "https://technology.gsu.edu/guides/it-resources-for-students/",
+                                'Report a bug': 'mailto:help@gsu.edu',
+                                'About': "# AI chatbot for graduate students."})
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
 
@@ -16,12 +16,12 @@ HEADERS = {
 }
 #logo and title
 st.logo("img/gsu.png",size = "large",link="https://www.gsu.edu/",icon_image="img/main_logo.png")
-st.title("PyPanther")
+st.title(":blue[PyPanther]")
 
 #sidebar to choose departments
 models ={"Computer Science":"aics","Business":"aibus","Law":"ailaw"}
 with st.sidebar:
-    option = st.selectbox("Choose your departments:",("Computer Science", "Business", "Law"))
+    option = st.selectbox("Choose your departments:",("Computer Science", "Business", "Law"),)
 
 # Initialize chat history
 if "messages" not in st.session_state:
