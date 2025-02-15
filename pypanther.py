@@ -15,7 +15,7 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 #logo and title
-st.logo("img/gsu.png",size = "large",link="https://www.gsu.edu/",icon_image="img/main_logo.png")
+st.logo("assets\images\gsu.png",size = "large",link="https://www.gsu.edu/",icon_image="assets\images\main_logo.png")
 st.title(":blue[PyPanther]")
 
 #sidebar to choose departments
