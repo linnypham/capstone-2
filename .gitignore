@@ -1,2 +1,3 @@
 /.streamlit/secrets.toml
 /.webui_secret_key
+/.data.api_key.py
