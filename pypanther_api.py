@@ -1,8 +1,6 @@
 import requests
 import re
-
-#models: "aics" for Computer Sciece Ai
-def pypanther(models,API_KEY,messages):
+def pypanther(model,API_KEY,message):
     API_URL = "http://localhost:3000/api/chat/completions"  
 
     HEADERS = {
@@ -11,8 +9,8 @@ def pypanther(models,API_KEY,messages):
     }
 
     payload = {
-            "model": f"{models}",
-            "messages": f"{messages}"
+            "model": f"{model}",
+            "messages": f"{message}"
         }
 
     response = requests.post(API_URL, headers=HEADERS, json=payload)
