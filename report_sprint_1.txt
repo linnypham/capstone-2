@@ -1,0 +1,25 @@
+Team Name: Ai Overlords
+
+Sprint Cycle: 02/10 - 02/24
+
+Sprint Leader: Linh H. Pham
+
+Members: Nadiha Thorton, Hamdi Akin
+
+Project's Purpose:
+A chatbot that is powered by Ai. The goal is to assits would be and new Graduate Students; answering questions with information from the Graduate Handbook. The program will be easy to be implemented. The program should be able to scale up or down base on the available resources. 
+
+User Stories:
+Graduate Students should be able to submit their questions to the chatbot and get an answer. The answer should be concise and accurate base on the source materials. 
+
+Programming Tasks:
+Create a proof of concept
+
+Team Members Accomplishments:
+Linh H. Pham: Created a working web app with gui
+Nadia Thorton: Creating a generic website for intergration
+Hamdi Aking: Creating a program for testing
+
+Next sprint's goals:
+Create a fully working product that is tested
+Deploy on a GSU server for furthur testing
