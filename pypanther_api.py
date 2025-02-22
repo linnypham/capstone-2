@@ -1,5 +1,7 @@
 import requests
 import re
+from data.api_key import API_KEY
+
 def pypanther(model,API_KEY,message):
     API_URL = "http://localhost:3000/api/chat/completions"  
 
@@ -22,3 +24,4 @@ def pypanther(model,API_KEY,message):
         
     return reply
         
+print(pypanther("aics",API_KEY, "what can you do?"))
