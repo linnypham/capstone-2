@@ -24,8 +24,8 @@ def add_file_to_knowledge(API_KEY, knowledge_id, file_id):
     response = requests.post(url, headers=headers, json=data)
     return response.json()
 
-#build request
-def pypanther(model,API_KEY,message,collection_id):
+#build request with collection id
+def pypanther_collectionId(model,API_KEY,message,collection_id):
     API_URL = "http://localhost:3000/api/chat/completions"  
 
     HEADERS = {
@@ -48,6 +48,29 @@ def pypanther(model,API_KEY,message,collection_id):
         
     return reply
 
+#build request
+def pypanther(model,API_KEY,message):
+    API_URL = "http://localhost:3000/api/chat/completions"  
+
+    HEADERS = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+            "model": model,
+            "messages": [{"role": "user", "content": message}],
+        }
+
+    response = requests.post(API_URL, headers=HEADERS, json=payload)
+    if response.status_code == 200:
+        raw_reply = response.json().get("choices", [{}])[0].get("message", {}).get("content", "Error: No response")
+        reply = re.sub(r"<think>.*?</think>", "", raw_reply, flags=re.DOTALL).strip()
+    else:
+        reply = f"Error {response.status_code}: {response.text}"
+        
+    return reply
+
 '''
 file_id = upload_file(API_KEY,'documents/Handbook-06-2022.pdf')
 print(add_file_to_knowledge(API_KEY,knowledge_id,file_id))
@@ -57,5 +80,5 @@ print(add_file_to_knowledge(API_KEY,knowledge_id,file_id2))'''
 
 question = "What are tuition and fees?"
 collection_id = "f802b70c-647c-4273-b7ee-75ee12a404c6"
-answer = pypanther("deepseek-r1:1.5b",API_KEY,question,collection_id)
+answer = pypanther("aics",API_KEY,question)
 print(answer)
