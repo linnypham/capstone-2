@@ -76,9 +76,9 @@ file_id = upload_file(API_KEY,'documents/Handbook-06-2022.pdf')
 print(add_file_to_knowledge(API_KEY,knowledge_id,file_id))
 
 file_id2 = upload_file(API_KEY,'documents/faq_cs_graduate.pdf')
-print(add_file_to_knowledge(API_KEY,knowledge_id,file_id2))'''
+print(add_file_to_knowledge(API_KEY,knowledge_id,file_id2))
+collection_id = "f802b70c-647c-4273-b7ee-75ee12a404c6"'''
 
 question = "What are tuition and fees?"
-collection_id = "f802b70c-647c-4273-b7ee-75ee12a404c6"
 answer = pypanther("aics",API_KEY,question)
 print(answer)
