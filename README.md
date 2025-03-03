@@ -1,4 +1,4 @@
-A chatbot using Deepseek to answer questions base on CS Graduate Handbook at GSU.
+JA chatbot using Deepseek to answer questions base on CS Graduate Handbook at GSU.
 
     To set your API:
 
