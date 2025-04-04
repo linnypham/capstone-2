@@ -19,9 +19,9 @@ st.logo("assets\images\gsu.png",size = "large",link="https://www.gsu.edu/",icon_
 st.title(":blue[PyPanther]")
 
 #sidebar to choose departments
-models ={"Computer Science":"aics","Business":"aibus","Law":"ailaw"}
+models ={"Computer Science":"aics","Music":"aimusic","Anthropology":"aianth"}
 with st.sidebar:
-    option = st.selectbox("Choose your departments:",("Computer Science", "Business", "Law"),)
+    option = st.selectbox("Choose your departments:",("Computer Science", "Music", "Anthropology"),)
 
 # Initialize chat history
 if "messages" not in st.session_state:
