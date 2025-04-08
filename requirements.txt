@@ -2,3 +2,4 @@ streamlit
 requests
 re
 time
+qrcode
