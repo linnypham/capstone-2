@@ -2,11 +2,25 @@ import streamlit as st
 import requests
 import re
 import time
+import socket
+import os
+from qrcode import QRCode
 #initial config
 st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout="centered", initial_sidebar_state="auto",
                    menu_items={'Get Help': "https://technology.gsu.edu/guides/it-resources-for-students/",
                                 'Report a bug': 'mailto:help@gsu.edu',
                                 'About': "# AI chatbot for graduate students."})
+def get_local_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("10.255.255.255", 1))
+        IP = s.getsockname()[0]
+    except Exception:
+        IP = "127.0.0.1"
+    finally:
+        s.close()
+    return IP
+
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
 
@@ -22,15 +36,31 @@ st.title(":blue[PyPanther]")
 models ={"Computer Science":"aics","Music":"aimusic","Anthropology":"aianthropology"}
 with st.sidebar:
     option = st.selectbox("Choose your departments:",("Computer Science", "Music", "Anthropology"),)
+    st.markdown(" ")
+    st.markdown(":arrow_down_small: Scan me to your phone :arrow_down_small:")
+    st.image("assets/url_qrcode.png")
+    
 
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    
+
+#qrcode
+os.makedirs("assets", exist_ok=True)
+port = 8501
+ip = get_local_ip()
+network_url = f"http://{ip}:{port}"
+qr = QRCode(version=1, box_size=10, border=5)
+qr.add_data(network_url)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("assets/url_qrcode.png")
+
 #hello message
 with st.chat_message("assistant"):
     st.markdown("Hello! I'm a bot. Please let me know your question.")
-
+    
+    
 
 # Display past messages
 for message in st.session_state.messages:
