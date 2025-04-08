@@ -37,7 +37,7 @@ models ={"Computer Science":"aics","Music":"aimusic","Anthropology":"aianthropol
 with st.sidebar:
     option = st.selectbox("Choose your departments:",("Computer Science", "Music", "Anthropology"),)
     st.markdown(" ")
-    st.markdown(":arrow_down_small: Scan me to your phone :arrow_down_small:")
+    st.markdown("Scan me to your phone")
     st.image("assets/url_qrcode.png")
     
 
