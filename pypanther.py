@@ -10,6 +10,7 @@ st.set_page_config(page_title="PyPanther", page_icon="img/main_logo.png", layout
                    menu_items={'Get Help': "https://technology.gsu.edu/guides/it-resources-for-students/",
                                 'Report a bug': 'mailto:help@gsu.edu',
                                 'About': "# AI chatbot for graduate students."})
+#get IP
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -20,6 +21,16 @@ def get_local_ip():
     finally:
         s.close()
     return IP
+#qrcode
+os.makedirs("assets", exist_ok=True)
+port = 8501
+ip = get_local_ip()
+network_url = f"http://{ip}:{port}"
+qr = QRCode(version=1, box_size=10, border=5)
+qr.add_data(network_url)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("assets/url_qrcode.png")
 
 # Set up API details
 API_URL = "http://localhost:3000/api/chat/completions"  
@@ -37,6 +48,8 @@ models ={"Computer Science":"aics","Music":"aimusic","Anthropology":"aianthropol
 with st.sidebar:
     option = st.selectbox("Choose your departments:",("Computer Science", "Music", "Anthropology"),)
     st.markdown(" ")
+    st.markdown("Wifi: PyPanther")
+    st.markdown("Password: pypanther")
     st.markdown("Scan me to your phone")
     st.image("assets/url_qrcode.png")
     
@@ -45,16 +58,7 @@ with st.sidebar:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-#qrcode
-os.makedirs("assets", exist_ok=True)
-port = 8501
-ip = get_local_ip()
-network_url = f"http://{ip}:{port}"
-qr = QRCode(version=1, box_size=10, border=5)
-qr.add_data(network_url)
-qr.make(fit=True)
-img = qr.make_image(fill_color="black", back_color="white")
-img.save("assets/url_qrcode.png")
+
 
 #hello message
 with st.chat_message("assistant"):
