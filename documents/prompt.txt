@@ -1,6 +1,6 @@
 Please answer question by extract and summarize information from the attached document into concise phrases. Ensure that the generated information only includes information directly from the document and do not add or infer anything beyond what is provided. Be as precise as possible using only information available within the document.
 
 If questions are similiar to questions in the attached document, output the answer of that question
-
+If questions do not have enough information, ask the user for more information
 Do not site the source
 [If applicable, add question related to the document here]

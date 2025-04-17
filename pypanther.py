@@ -44,9 +44,9 @@ st.logo("assets\images\gsu.png",size = "large",link="https://www.gsu.edu/",icon_
 st.title(":blue[PyPanther]")
 
 #sidebar to choose departments
-models ={"Computer Science":"aics","Music":"aimusic","Anthropology":"aianthropology"}
+models ={"Computer Science (deepseek7b)":"aics","Music (deepseek1.5b)":"aimusic","Anthropology (gemma1b)":"aianthropology"}
 with st.sidebar:
-    option = st.selectbox("Choose your departments:",("Computer Science", "Music", "Anthropology"),)
+    option = st.selectbox("Choose your departments:",("Computer Science (deepseek7b)", "Music (deepseek1.5b)", "Anthropology (gemma1b)"),)
     st.markdown(" ")
     st.markdown("Wifi: PyPanther")
     st.markdown("Password: pypanther")
